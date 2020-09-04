@@ -2,6 +2,7 @@ import interfaceAttach from './attach/interfaces-attach.module';
 import interfaceDetach from './detach/interfaces-detach.module';
 import interfaceRename from './rename/interfaces-rename.module';
 import olaActivation from './ola-activation/ola-activation.module';
+import olaReset from './ola-reset/ola-reset.module';
 import olaTerminate from './ola-terminate/ola-terminate.module';
 import olaConfiguration from './ola-configuration/ola-configuration.module';
 
@@ -19,6 +20,7 @@ angular
     interfaceDetach,
     interfaceRename,
     olaActivation,
+    olaReset,
     olaTerminate,
     olaConfiguration,
     'ovh-api-services',

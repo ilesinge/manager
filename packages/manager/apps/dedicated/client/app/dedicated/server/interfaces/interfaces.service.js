@@ -160,22 +160,59 @@ export default class DedicatedServerInterfacesService {
   }
 
   setPrivateAggregation(serverName, name, interfacesToGroup) {
-    return this.Ola.v6().group(
-      { serverName },
-      {
+    return this.$http
+      .post(`/dedicated/server/${serverName}/ola/aggregation`, {
         name,
         virtualNetworkInterfaces: map(interfacesToGroup, 'id'),
-      },
-    ).$promise;
+      })
+      .then((task) => this.waitForTask(serverName, task.data.taskId));
   }
 
   setDefaultInterfaces(serverName, interfaceToUngroup) {
-    return this.Ola.v6().ungroup(
-      { serverName },
-      {
+    return this.$http
+      .post(`/dedicated/server/${serverName}/ola/reset`, {
         virtualNetworkInterface: interfaceToUngroup.id,
+      })
+      .then((task) => this.waitForTask(serverName, task.data.taskId));
+  }
+
+  waitForTask(serverName, taskId) {
+    return this.Poller.poll(
+      `/dedicated/server/${serverName}/task/${taskId}`,
+      {},
+      {
+        namespace: 'dedicated.server.interfaces.ola.aggregation',
+        method: 'get',
+        successRule: {
+          status: 'done',
+        },
+        errorRule: (task) => {
+          return task.status === 'ovhError' || task.status === 'customerError';
+        },
       },
-    ).$promise;
+    ).then(
+      () => true,
+      (error) => {
+        if (error.status === 404) {
+          return true;
+        }
+        return Promise.reject(error);
+      },
+    );
+  }
+
+  resetOlaInterfaces(serverName, olaInterfaces) {
+    return this.$q
+      .all(
+        olaInterfaces.map(({ id }) =>
+          this.$http
+            .post(`/dedicated/server/${serverName}/ola/reset`, {
+              virtualNetworkInterface: id,
+            })
+            .then(({ data }) => data),
+        ),
+      )
+      .then((tasks) => this.waitAllTasks(serverName, tasks));
   }
 
   waitAllTasks(serverName, tasks) {

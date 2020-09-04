@@ -3,16 +3,13 @@ import { GUIDES } from './interfaces.constants';
 
 export default /* @ngInject */ ($stateProvider) => {
   $stateProvider.state('app.dedicated.server.interfaces', {
-    url: '/interfaces?:configStep',
+    url: '/interfaces',
     views: {
       'tabView@app.dedicated.server': {
         component: 'dedicatedServerInterfaces',
       },
     },
     translations: { value: ['.'], format: 'json' },
-    params: {
-      configStep: { dynamic: true },
-    },
     resolve: {
       alertError: /* @ngInject */ ($timeout, $translate, Alerter) => (
         translateId,
@@ -21,7 +18,9 @@ export default /* @ngInject */ ($stateProvider) => {
         $timeout(() => {
           Alerter.set(
             'alert-danger',
-            $translate.instant(translateId, { error: error.message }),
+            $translate.instant(translateId, {
+              error: get(error, 'message', error),
+            }),
           );
         }),
       failoverIps: /* @ngInject */ (OvhApiIp, serverName) =>
