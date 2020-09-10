@@ -52,18 +52,11 @@ import ovhManagerAccountMigration from '@ovh-ux/manager-account-migration';
 import account from './account';
 import config from './config/config';
 import contactsService from './account/contacts/service/contacts-service.module';
-import dedicatedCloudDatacenterDrp from './dedicatedCloud/datacenter/drp';
-import dedicatedCloudDatacenterDashboardDeleteDrp from './dedicatedCloud/datacenter/dashboard/deleteDrp';
-import dedicatedCloudTerminate from './dedicatedCloud/terminate/terminate.module';
-import dedicatedCloudDashboard from './dedicatedCloud/dashboard';
-import dedicatedCloudOperationExecutionDateEdit from './dedicatedCloud/operation/executionDateEdit';
+import dedicatedCloud from './dedicatedCloud';
 import dedicatedUniverseComponents from './dedicatedUniverseComponents';
 import errorPage from './error';
-import ovhManagerPccResourceUpgrade from './dedicatedCloud/resource/upgrade';
 
 import dedicatedServer from './dedicated/server';
-
-import datacenterBackup from './dedicatedCloud/datacenter/backup';
 import userContracts from './user-contracts';
 
 import { TRACKING } from './at-internet.constants';
@@ -84,12 +77,7 @@ angular
       chartjs,
       'controllers',
       contactsService,
-      datacenterBackup,
-      dedicatedCloudDatacenterDrp,
-      dedicatedCloudDatacenterDashboardDeleteDrp,
-      dedicatedCloudTerminate,
-      dedicatedCloudDashboard,
-      dedicatedCloudOperationExecutionDateEdit,
+      dedicatedCloud,
       dedicatedServer,
       dedicatedUniverseComponents,
       'directives',
@@ -132,7 +120,6 @@ angular
       ovhManagerAtInternetConfiguration,
       ovhManagerAccountMigration,
       ovhManagerIplb,
-      ovhManagerPccResourceUpgrade,
       ovhManagerServerSidebar,
       ovhManagerSupport,
       ovhManagerVeeamEnterprise,

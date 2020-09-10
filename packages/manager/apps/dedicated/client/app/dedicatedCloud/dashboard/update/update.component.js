@@ -1,4 +1,3 @@
-import controller from './update.controller';
 import template from './update.html';
 
 export default {
@@ -8,6 +7,5 @@ export default {
     operationsUrl: '<',
     targetVersion: '<',
   },
-  controller,
   template,
 };
