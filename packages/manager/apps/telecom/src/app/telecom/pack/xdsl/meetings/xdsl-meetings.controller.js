@@ -57,12 +57,8 @@ export default class XdslMeetingCtrl {
               id: index,
               start: slot.startDate,
               end: slot.endDate,
-              startTime: moment(slot.startDate)
-                .utc()
-                .format('HH:mm'),
-              endTime: moment(slot.endDate)
-                .utc()
-                .format('HH:mm'),
+              startTime: moment(slot.startDate).format('HH:mm'),
+              endTime: moment(slot.endDate).format('HH:mm'),
               selected: false,
             });
           });
@@ -101,16 +97,14 @@ export default class XdslMeetingCtrl {
   }
 
   getStart() {
-    const start = moment(this.select.meetingSlots.slot.startDate)
-      .utc()
-      .format('HH:mm');
+    const start = moment(this.select.meetingSlots.slot.startDate).format(
+      'HH:mm',
+    );
     return start;
   }
 
   getEnd() {
-    const end = moment(this.select.meetingSlots.slot.endDate)
-      .utc()
-      .format('HH:mm');
+    const end = moment(this.select.meetingSlots.slot.endDate).format('HH:mm');
     return end;
   }
 
