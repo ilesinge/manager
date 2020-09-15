@@ -93,7 +93,9 @@
                         data-model="$ctrl.model"
                         value="slot.start"
                     >
-                        {{slot.startTime}} - {{slot.endTime}}
+                        <span data-ng-bind="slot.startTime"></span>
+                        -
+                        <span data-ng-bind="slot.endTime"></span>
                     </oui-radio>
                 </div>
             </div>

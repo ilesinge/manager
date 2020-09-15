@@ -45,51 +45,26 @@ export default class XdslMeetingCtrl {
               .format('ddd DD MMM YYYY');
             if (!prevTitle) {
               prevTitle = title;
-              slots.push({
-                id: index,
-                start: slot.startDate,
-                end: slot.endDate,
-                startTime: moment(slot.startDate)
-                  .utc()
-                  .format('HH:mm'),
-                endTime: moment(slot.endDate)
-                  .utc()
-                  .format('HH:mm'),
-                selected: false,
-              });
             } else if (prevTitle !== title) {
               this.meetings.push({
                 title: prevTitle,
                 slots,
               });
               slots = [];
-              slots.push({
-                id: index,
-                start: slot.startDate,
-                end: slot.endDate,
-                startTime: moment(slot.startDate)
-                  .utc()
-                  .format('HH:mm'),
-                endTime: moment(slot.endDate)
-                  .utc()
-                  .format('HH:mm'),
-                selected: false,
-              });
               prevTitle = title;
-            } else {
-              slots.push({
-                id: index,
-                start: slot.startDate,
-                end: slot.endDate,
-                startTime: moment(slot.startDate)
-                  .utc()
-                  .format('HH:mm'),
-                endTime: moment(slot.endDate)
-                  .utc()
-                  .format('HH:mm'),
-                selected: false,
-              });
             }
+            slots.push({
+              id: index,
+              start: slot.startDate,
+              end: slot.endDate,
+              startTime: moment(slot.startDate)
+                .utc()
+                .format('HH:mm'),
+              endTime: moment(slot.endDate)
+                .utc()
+                .format('HH:mm'),
+              selected: false,
+            });
           });
           this.showMeetingSlots = true;
         }
