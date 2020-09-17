@@ -33,16 +33,15 @@ export default class XdslMeetingCtrl {
         serviceName: this.serviceName,
       })
       .then((data) => {
-        if (data.result) {
-          this.meetingSlots.canBookFakeMeeting = data.result.canBookFakeMeeting;
-          this.meetingSlots.slots = data.result.meetingSlots;
+        const { result } = data;
+        if (result) {
+          this.meetingSlots.canBookFakeMeeting = result.canBookFakeMeeting;
+          this.meetingSlots.slots = result.meetingSlots;
 
           let slots = [];
           let prevTitle;
           data.result.meetingSlots.forEach((slot, index) => {
-            const title = moment(slot.startDate)
-              .utc()
-              .format('ddd DD MMM YYYY');
+            const title = moment(slot.startDate).format('ddd DD MMM YYYY');
             if (!prevTitle) {
               prevTitle = title;
             } else if (prevTitle !== title) {
@@ -63,6 +62,10 @@ export default class XdslMeetingCtrl {
             });
           });
           this.showMeetingSlots = true;
+        } else if (data.error) {
+          this.errorMessage = this.$translate.instant('xdsl_meeting_error', {
+            error: data.error,
+          });
         }
       })
       .catch((error) => {
