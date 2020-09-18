@@ -8,6 +8,10 @@ import values from 'lodash/values';
 
 angular
   .module('Module.ip.controllers')
+  .config((ouiPaginationConfigurationProvider) => {
+    ouiPaginationConfigurationProvider.setPageSize(10);
+    ouiPaginationConfigurationProvider.setPageSizeList([10, 20, 50]);
+  })
   .controller(
     'IpDashboardCtrl',
     (
@@ -31,6 +35,12 @@ angular
       $scope.currentView = 'table';
       $scope.containsAllServices = false;
       $scope.getAll = false;
+
+      $scope.pagination = {
+        offset: 1,
+        pageSize: 10,
+        pageSizeMax: 50,
+      };
 
       /* Init */
 
@@ -288,15 +298,16 @@ angular
                 });
             }
 
-            $q.all([
-              reverseDelegationPromise,
-              virtualMacPromise,
-              cloudIpSubTypePromise,
-            ]).then(() => {
-              set(service, 'detailsLoaded', true);
-            });
-
-            return ipBlocks;
+            return $q
+              .all([
+                reverseDelegationPromise,
+                virtualMacPromise,
+                cloudIpSubTypePromise,
+              ])
+              .then(() => {
+                set(service, 'detailsLoaded', true);
+              })
+              .then(() => ipBlocks);
           },
         );
       }
