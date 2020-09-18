@@ -3,14 +3,7 @@ import set from 'lodash/set';
 
 export default class XdslModemAcsBackendCtrl {
   /* @ngInject */
-  constructor(
-    $scope,
-    $translate,
-    OvhApiXdsl,
-    TucPackXdslModemMediator,
-    TucToast,
-  ) {
-    this.$scope = $scope;
+  constructor($translate, OvhApiXdsl, TucPackXdslModemMediator, TucToast) {
     this.$translate = $translate;
     this.OvhApiXdsl = OvhApiXdsl;
     this.mediator = TucPackXdslModemMediator;
@@ -18,7 +11,7 @@ export default class XdslModemAcsBackendCtrl {
   }
 
   $onInit() {
-    this.getAvailableAcsBackend();
+    return this.getAvailableAcsBackend();
   }
 
   getAvailableAcsBackend() {
