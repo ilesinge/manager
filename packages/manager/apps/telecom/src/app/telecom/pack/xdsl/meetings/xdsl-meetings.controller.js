@@ -1,5 +1,4 @@
 import get from 'lodash/get';
-import 'moment';
 
 export default class XdslMeetingCtrl {
   /* @ngInject */
