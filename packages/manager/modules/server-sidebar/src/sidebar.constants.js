@@ -52,9 +52,40 @@ export const DEDICATED_CLOUD_CONFIG = {
       stateParams: ['productId'],
       icon: 'ovh-font ovh-font-dedicatedCloud',
       app: [DEDICATED],
+      itemsFilterFn: (item) => {
+        return item.serviceName !== 'pcc-178-33-102-32';
+      },
     },
   ],
   loadOnState: 'app.dedicatedClouds',
+  icon: 'ovh-font ovh-font-dedicatedCloud',
+  app: [DEDICATED],
+  regions: ['EU', 'CA', 'US'],
+};
+
+export const MANAGED_BAREMETAL_CONFIG = {
+  id: 'managedBaremetal',
+  types: [
+    {
+      path: '/dedicatedCloud',
+      types: [
+        {
+          path: '/dedicatedCloud/:productId/datacenter',
+          state: 'app.managedBaremetal.datacenter',
+          stateParams: ['productId', 'datacenterId'],
+          app: [DEDICATED],
+        },
+      ],
+      state: 'app.managedBaremetal',
+      stateParams: ['productId'],
+      icon: 'ovh-font ovh-font-dedicatedCloud',
+      app: [DEDICATED],
+      itemsFilterFn: (item) => {
+        return item.serviceName === 'pcc-178-33-102-32';
+      },
+    },
+  ],
+  loadOnState: 'app.managedBaremetal',
   icon: 'ovh-font ovh-font-dedicatedCloud',
   app: [DEDICATED],
   regions: ['EU', 'CA', 'US'],
@@ -315,6 +346,7 @@ export const CLOUD_DESKTOP_CONFIG = {
 
 export const SIDEBAR_CONFIG = [
   DEDICATED_SERVER_CONFIG,
+  MANAGED_BAREMETAL_CONFIG,
   DEDICATED_CLOUD_CONFIG,
   NETWORKS_CONFIG,
   ENTERPRISE_CLOUD_DATABASE,

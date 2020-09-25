@@ -54,7 +54,7 @@ import config from './config/config';
 import contactsService from './account/contacts/service/contacts-service.module';
 import dedicatedCloud from './dedicatedCloud';
 import dedicatedUniverseComponents from './dedicatedUniverseComponents';
-import managedBaremetal from './managed-baremetal';
+import managedBaremetal from './managedBaremetal';
 import errorPage from './error';
 
 import dedicatedServer from './dedicated/server';

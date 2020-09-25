@@ -23,7 +23,8 @@ export default /* @ngInject */ ($stateProvider) => {
         );
       },
       rightId: /* @ngInject */ ($transition$) => $transition$.params().rightId,
-      user: /* @ngInject */ ($transition$) => $transition$.params().user,
+      user: /* @ngInject */ (DedicatedCloud, productId, userId) =>
+        DedicatedCloud.getUserDetail(productId, userId),
     },
   });
 };

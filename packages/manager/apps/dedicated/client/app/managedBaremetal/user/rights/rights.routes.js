@@ -1,19 +1,19 @@
 export default /* @ngInject */ ($stateProvider) => {
   $stateProvider.state('app.managedBaremetal.users.rights', {
-    url: '/rights',
+    url: '/:userId/rights',
     params: {
-      user: null,
+      userId: null,
     },
     views: {
       pccUserView: 'dedicatedCloudUserRights',
     },
     resolve: {
-      editRight: /* @ngInject */ ($state, user) => (rightId) =>
+      editRight: /* @ngInject */ ($state, userId) => (rightId) =>
         $state.go('app.managedBaremetal.users.rights.edit', {
           rightId,
-          user,
+          userId,
         }),
-      user: /* @ngInject */ ($transition$) => $transition$.params().user,
+      userId: /* @ngInject */ ($transition$) => $transition$.params().userId,
     },
   });
 };

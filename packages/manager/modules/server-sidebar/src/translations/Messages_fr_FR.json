@@ -4,6 +4,7 @@
   "server_sidebar_item_title_WEB": "Web",
   "server_sidebar_item_empty_title": "Aucun service",
   "server_sidebar_item_dedicatedServers_title": "Serveurs Dédiés",
+  "server_sidebar_item_managedBaremetal_title": "Managed Bare Metal",
   "server_sidebar_item_dedicatedClouds_title": "Private Cloud",
   "server_sidebar_item_networks_title": "NAS et CDN",
   "server_sidebar_item_licences_title": "Licences",

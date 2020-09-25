@@ -2,6 +2,10 @@ import get from 'lodash/get';
 import sortBy from 'lodash/sortBy';
 
 import DedicatedCloudInfo from '../components/dedicated-cloud/dedicatedCloud.class';
+import {
+  DEDICATEDCLOUD_DATACENTER_DRP_STATUS,
+  DEDICATEDCLOUD_DATACENTER_DRP_VPN_CONFIGURATION_STATUS,
+} from '../components/dedicated-cloud/datacenter/drp/dedicatedCloud-datacenter-drp.constants';
 
 export default /* @ngInject */ ($stateProvider, $urlServiceProvider) => {
   $stateProvider.state('app.managedBaremetal', {
@@ -11,12 +15,7 @@ export default /* @ngInject */ ($stateProvider, $urlServiceProvider) => {
         DedicatedCloud.getSelected(productId, true).then(
           (dedicatedCloudData) => new DedicatedCloudInfo(dedicatedCloudData),
         ),
-      currentDrp: /* @ngInject */ (
-        dedicatedCloudDrp,
-        DEDICATEDCLOUD_DATACENTER_DRP_STATUS,
-        DEDICATEDCLOUD_DATACENTER_DRP_VPN_CONFIGURATION_STATUS,
-        productId,
-      ) =>
+      currentDrp: /* @ngInject */ (dedicatedCloudDrp, productId) =>
         dedicatedCloudDrp.getPccDrpPlan(productId).then((states) => {
           const existingPlan = states.find(
             ({ state }) =>
@@ -131,7 +130,7 @@ export default /* @ngInject */ ($stateProvider, $urlServiceProvider) => {
           drpInformations: currentDrp,
         }),
       goToDrpDatacenterSelection: /* @ngInject */ ($state) => () =>
-        $state.go('app.managedBaremetal.drpDatacenterSelection'),
+        $state.go('app.managedBaremetal.dashboard.drpDatacenterSelection'),
       goToPccDashboard: /* @ngInject */ ($state) => (reload = false) =>
         $state.go('app.managedBaremetal', {}, { reload }),
       goToVpnConfiguration: /* @ngInject */ ($state, currentDrp) => () =>
@@ -185,6 +184,7 @@ export default /* @ngInject */ ($stateProvider, $urlServiceProvider) => {
         message = false,
         type = 'success',
       ) => goBackToState('app.managedBaremetal.dashboard', message, type),
+      nsxUnavailable: /* @ngInject */ () => true,
       operationsUrl: /* @ngInject */ ($state, currentService) =>
         $state.href('app.managedBaremetal.operation', {
           productId: currentService.serviceName,
@@ -218,7 +218,7 @@ export default /* @ngInject */ ($stateProvider, $urlServiceProvider) => {
       usesLegacyOrder: /* @ngInject */ (currentService) =>
         currentService.usesLegacyOrder,
     },
-    url: '/configuration/managed_baremetal/:productId',
+    url: '/configuration/managedBaremetal/:productId',
     views: {
       '': 'ovhManagerPcc',
     },
@@ -226,13 +226,13 @@ export default /* @ngInject */ ($stateProvider, $urlServiceProvider) => {
   });
 
   // ensure compatibility with links sended by emails
-  // like #/configuration/managed_baremetal/pcc-123456?action=confirmcancel&token=myToken
+  // like #/configuration/managedBaremetal/pcc-123456?action=confirmcancel&token=myToken
   // make a redirect to the new url of ui route
   $urlServiceProvider.rules.when(
-    '/configuration/managed_baremetal/:productId?action&token',
+    '/configuration/managedBaremetal/:productId?action&token',
     (match) => {
       if (match.action === 'confirmcancel') {
-        return `/configuration/managed_baremetal/${match.productId}/terminate-confirm?token=${match.token}`;
+        return `/configuration/managedBaremetal/${match.productId}/terminate-confirm?token=${match.token}`;
       }
 
       return false;

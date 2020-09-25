@@ -45,10 +45,12 @@ export default /* @ngInject */ ($stateProvider) => {
               head(tasks),
             );
           }),
-      onUpgradeVersion: /* @ngInject */ ($state, currentService) => () =>
+      onUpgradeVersion: /* @ngInject */ ($state, currentService) => (
+        targetVersion,
+      ) =>
         $state.go('app.managedBaremetal.dashboard.update', {
           currentService,
-          targetVersion: currentService.version.lastMinor,
+          targetVersion,
         }),
 
       onAssociateIpBlock: /* @ngInject */ ($state) => () =>

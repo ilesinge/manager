@@ -32,9 +32,9 @@ export default /* @ngInject */ ($stateProvider) => {
         $state.go('app.managedBaremetal.users.enable', {
           user,
         }),
-      modifyUserRights: /* @ngInject */ ($state) => (user) =>
+      modifyUserRights: /* @ngInject */ ($state) => (userId) =>
         $state.go('app.managedBaremetal.users.rights', {
-          user,
+          userId,
         }),
       passwordReset: /* @ngInject */ ($state) => (user, passwordPolicy) =>
         $state.go('app.managedBaremetal.users.password-reset', {

@@ -356,7 +356,9 @@ export default class OvhManagerServerSidebarController {
       })
       .$promise.then((items) => ({
         type: typeDefinition,
-        items,
+        items: typeDefinition.itemsFilterFn
+          ? filter(items, typeDefinition.itemsFilterFn)
+          : items,
       }));
   }
 }
