@@ -54,6 +54,7 @@ import config from './config/config';
 import contactsService from './account/contacts/service/contacts-service.module';
 import dedicatedCloud from './dedicatedCloud';
 import dedicatedUniverseComponents from './dedicatedUniverseComponents';
+import managedBaremetal from './managed-baremetal';
 import errorPage from './error';
 
 import dedicatedServer from './dedicated/server';
@@ -86,6 +87,7 @@ angular
       'internationalPhoneNumber',
       'Module.download',
       Environment.getRegion() === 'CA' ? moduleExchange : undefined,
+      managedBaremetal,
       'Module.ip',
       'Module.license',
       'Module.otrs',
