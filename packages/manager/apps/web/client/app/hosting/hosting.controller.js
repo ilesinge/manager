@@ -41,6 +41,7 @@ export default class {
     HostingIndy,
     HostingOvhConfig,
     HostingTask,
+    HostingCDN,
     logs,
     pendingTasks,
     PrivateDatabase,
@@ -78,6 +79,7 @@ export default class {
     this.HostingIndy = HostingIndy;
     this.HostingOvhConfig = HostingOvhConfig;
     this.HostingTask = HostingTask;
+    this.HostingCDN = HostingCDN;
     this.pendingTasks = pendingTasks;
     this.PrivateDatabase = PrivateDatabase;
     this.privateDatabasesDetachable = privateDatabasesDetachable;
@@ -87,6 +89,7 @@ export default class {
   }
 
   $onInit() {
+    console.log('ZM:: Hosting.onInit');
     this.$scope.loadingHostingInformations = true;
     this.$scope.loadingHostingError = false;
     this.$scope.urls = {
@@ -403,7 +406,7 @@ export default class {
       })
       .then(({ hosting, user }) =>
         isEmpty(hosting.offer)
-          ? this.$q.when({ hosting, user })
+          ? this.$q.when({ hosting, user, cdn })
           : this.$q.all({
               indys: this.HostingIndy.getIndys(this.$stateParams.productId),
               freedoms: this.HostingFreedom.getFreedoms(
@@ -412,9 +415,11 @@ export default class {
               ),
               hosting,
               user,
+              cdn: this.HostingCDN.getCDNProperties(hosting.serviceName),
             }),
       )
-      .then(({ indys, freedoms, hosting, user }) => {
+      .then(({ indys, freedoms, hosting, user, cdn }) => {
+        console.log('ZM:: CDN', cdn);
         this.tabMenu = {
           title: this.$translate.instant('navigation_more'),
           items: [
@@ -428,6 +433,7 @@ export default class {
             },
           ],
         };
+        this.$scope.cdnProperties = cdn;
 
         if (hosting.isCloudWeb) {
           remove(this.tabs, (t) => t === 'TASK');
@@ -693,6 +699,7 @@ export default class {
   loadHosting() {
     return this.Hosting.getSelected(this.$stateParams.productId, true)
       .then((hosting) => {
+        console.log('ZM:: loadHosting', hosting);
         this.$scope.hosting = hosting;
         this.$scope.hosting.displayName =
           hosting.displayName || hosting.serviceDisplayName;

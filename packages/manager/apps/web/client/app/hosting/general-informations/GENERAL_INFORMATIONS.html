@@ -16,6 +16,18 @@
             ></span>
         </oui-message>
 
+        <oui-message
+            type="info"
+            aria-close-button-label="Close"
+            on-dismiss="$ctrl.onDismiss()"
+            dismissable
+        >
+            <span data-translate=""
+                >ZM:: L’option « Shared CDN » pour vos hébergements évolue
+                ...</span
+            >
+        </oui-message>
+
         <div class="row d-md-flex" data-ng-if="!hosting.isExpired">
             <div class="col-md-4 mb-5">
                 <oui-tile
@@ -380,6 +392,9 @@
                         data-term="{{:: 'hosting_dashboard_service_cdn' | translate }}"
                     >
                         <oui-tile-description>
+                            <span class="oui-badge oui-badge_s oui-badge_new"
+                                >New</span
+                            ><br />
                             <span
                                 class="mr-2"
                                 data-ng-bind="::hosting.hasCdn ? ('common_yes' | translate) : ('common_no' | translate)"
