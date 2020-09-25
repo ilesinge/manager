@@ -4,7 +4,7 @@ import datacenterDrpSummaryComponent from '../../../../components/dedicated-clou
 import deleteDrp from './delete';
 import routing from './summary.routing';
 
-const moduleName = 'ovhManagerDedicatedCloudDatacenterDrpSummaryModule';
+const moduleName = 'managedBaremetalDatacenterDrpSummaryModule';
 
 angular
   .module(moduleName, [datacenterDrpSummaryComponent, deleteDrp])

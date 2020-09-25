@@ -4,7 +4,7 @@ import add from './add';
 import datacentersComponent from '../../components/dedicated-cloud/datacenters';
 import routing from './datacenters.routes';
 
-const moduleName = 'ovhManagerDedicatedCloudDatacenters';
+const moduleName = 'managedBaremetalDatacenters';
 
 angular.module(moduleName, [add, datacentersComponent]).config(routing);
 

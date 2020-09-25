@@ -8,7 +8,7 @@ import newBackup from './new';
 import splaLicence from './splaLicence';
 import upgrade from './upgrade';
 
-const moduleName = 'ovhManagerDedicatedCloudDatacenterBackup';
+const moduleName = 'managedBaremetalDatacenterBackup';
 
 angular
   .module(moduleName, [

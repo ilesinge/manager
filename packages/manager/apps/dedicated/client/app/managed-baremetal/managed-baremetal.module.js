@@ -12,7 +12,7 @@ import security from './security';
 import servicePackUpgrade from './service-pack/upgrade';
 import user from './user';
 
-const moduleName = 'ovhManagerDedicatedCloudModule';
+const moduleName = 'managedBaremetalModule';
 
 angular
   .module(moduleName, [

@@ -4,7 +4,7 @@ import datacenterDatastoreResourceUpgradeLegacyComponent from '../../../../../co
 import routing from './resource-upgrade-legacy.routes';
 
 const moduleName =
-  'dedicatedCloudDatacenterDatastoreResourceUpgradeLegacyModule';
+  'managedBaremetalDatacenterDatastoreResourceUpgradeLegacyModule';
 
 angular
   .module(moduleName, [datacenterDatastoreResourceUpgradeLegacyComponent])

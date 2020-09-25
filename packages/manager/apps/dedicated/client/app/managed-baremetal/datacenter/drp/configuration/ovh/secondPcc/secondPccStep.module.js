@@ -3,7 +3,7 @@ import angular from 'angular';
 import datacenterDrpOvhSecondPccComponent from '../../../../../../components/dedicated-cloud/datacenter/drp/configuration/ovh/secondPcc';
 import routing from './secondPccStep.routing';
 
-const moduleName = 'dedicatedCloudDatacenterDrpOvhSecondPccStepModule';
+const moduleName = 'managedBaremetalDatacenterDrpOvhSecondPccStepModule';
 
 angular
   .module(moduleName, [datacenterDrpOvhSecondPccComponent])

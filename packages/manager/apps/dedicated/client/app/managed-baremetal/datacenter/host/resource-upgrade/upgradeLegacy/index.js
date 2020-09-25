@@ -3,7 +3,7 @@ import '@uirouter/angularjs';
 import 'oclazyload';
 
 const moduleName =
-  'dedicatedCloudDatacenterHostResourceUpgradeLegacyLazyloading';
+  'managedBaremetalDatacenterHostResourceUpgradeLegacyLazyloading';
 
 angular.module(moduleName, ['ui.router', 'oc.lazyLoad']).config(
   /* @ngInject */ ($stateProvider) => {

@@ -5,7 +5,7 @@ import mainPcc from './mainPcc';
 import routing from './ovh.routing';
 import secondPcc from './secondPcc';
 
-const moduleName = 'dedicatedCloudDatacenterDrpOvhModule';
+const moduleName = 'managedBaremetalDatacenterDrpOvhModule';
 
 angular
   .module(moduleName, [datacenterDrpOvhComponent, mainPcc, secondPcc])

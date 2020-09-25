@@ -3,7 +3,7 @@ import angular from 'angular';
 import datacenterSecuritySessionTimeoutUpdateComponent from '../../../../components/dedicated-cloud/security/session-timeout/update';
 import routing from './session-timeout-update.routing';
 
-const moduleName = 'dedicatedCloudSecuritySessionTimeoutUpdate';
+const moduleName = 'managedBaremetalSecuritySessionTimeoutUpdate';
 
 angular
   .module(moduleName, [datacenterSecuritySessionTimeoutUpdateComponent])

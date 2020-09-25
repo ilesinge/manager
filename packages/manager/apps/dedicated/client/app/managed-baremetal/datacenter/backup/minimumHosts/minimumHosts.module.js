@@ -3,7 +3,7 @@ import angular from 'angular';
 import datacenterBackupMinimumHostsComponent from '../../../../components/dedicated-cloud/datacenter/backup/minimumHosts';
 import routing from './minimumHosts.routing';
 
-const moduleName = 'ovhManagerDedicatedCloudDatacenterBackupMinimumHosts';
+const moduleName = 'managedBaremetalDatacenterBackupMinimumHosts';
 
 angular
   .module(moduleName, [datacenterBackupMinimumHostsComponent])

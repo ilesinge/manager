@@ -8,7 +8,7 @@ import upgradeModule from '../../../components/dedicated-cloud/service-pack/upgr
 
 import { registerState } from './upgrade.routing';
 
-const moduleName = 'ovhManagerPccServicePackUpgrade';
+const moduleName = 'managedBaremetalServicePackUpgrade';
 
 angular
   .module(moduleName, [

@@ -13,7 +13,7 @@ import update from './update';
 import vmwareOptionDisable from './vmware-option/disable';
 import vmwareOptionOrder from './vmware-option/order';
 
-const moduleName = 'dedicatedCloudDashboardModule';
+const moduleName = 'managedBaremetalDashboardModule';
 
 angular
   .module(moduleName, [

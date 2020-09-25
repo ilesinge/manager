@@ -2,8 +2,7 @@ import angular from 'angular';
 import '@uirouter/angularjs';
 import 'oclazyload';
 
-const moduleName =
-  'ovhManagerDedicatedCloudDatacenterDatastoreOrderLegacyLazyloading';
+const moduleName = 'managedBaremetalDatacenterDatastoreOrderLegacyLazyloading';
 
 angular.module(moduleName, ['ui.router', 'oc.lazyLoad']).config(
   /* @ngInject */ ($stateProvider) => {

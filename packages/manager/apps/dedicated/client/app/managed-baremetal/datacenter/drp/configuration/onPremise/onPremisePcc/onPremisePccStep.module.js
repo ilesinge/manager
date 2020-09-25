@@ -3,7 +3,7 @@ import angular from 'angular';
 import datacenterDrpOnPremiseStepComponent from '../../../../../../components/dedicated-cloud/datacenter/drp/configuration/onPremise/onPremisePcc';
 import routing from './onPremisePccStep.routing';
 
-const moduleName = 'dedicatedCloudDatacenterDrpOnPremiseOnPremisePccStepModule';
+const moduleName = 'managedBaremetalDatacenterDrpOnPremiseOnPremisePccStepModule';
 
 angular
   .module(moduleName, [datacenterDrpOnPremiseStepComponent])

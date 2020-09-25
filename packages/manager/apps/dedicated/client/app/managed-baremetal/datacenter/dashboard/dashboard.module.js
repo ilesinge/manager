@@ -5,7 +5,7 @@ import deleteDatacenter from './delete';
 import deleteDrp from './deleteDrp';
 import routing from './dashboard.routes';
 
-const moduleName = 'ovhManagerDedicatedCloudDatacenterDashboard';
+const moduleName = 'managedBaremetalDatacenterDashboard';
 
 angular
   .module(moduleName, [

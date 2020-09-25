@@ -3,7 +3,7 @@ import angular from 'angular';
 import vmwareOptionDisableComponent from '../../../../components/dedicated-cloud/vmware-option/disable';
 import routing from './vmware-option-disable.routes';
 
-const moduleName = 'dedicatedCloudVmwareOptionDisable';
+const moduleName = 'managedBaremetalVmwareOptionDisable';
 
 angular.module(moduleName, [vmwareOptionDisableComponent]).config(routing);
 

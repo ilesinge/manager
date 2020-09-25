@@ -2,7 +2,7 @@ import basicOptionsModule from '../../../../../components/dedicated-cloud/servic
 
 import { registerState } from './basicOptions.routing';
 
-const moduleName = 'ovhManagerPccServicePackUpgradeBasicOptions';
+const moduleName = 'managedBaremetalServicePackUpgradeBasicOptions';
 
 angular.module(moduleName, [basicOptionsModule]).config(registerState);
 

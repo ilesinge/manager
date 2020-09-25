@@ -3,7 +3,7 @@ import '@uirouter/angularjs';
 import 'oclazyload';
 
 const moduleName =
-  'dedicatedCloudDatacenterDrpOnPremiseOnPremisePccStepLazyloading';
+  'managedBaremetalDatacenterDrpOnPremiseOnPremisePccStepLazyloading';
 
 angular.module(moduleName, ['ui.router', 'oc.lazyLoad']).config(
   /* @ngInject */ ($stateProvider) => {

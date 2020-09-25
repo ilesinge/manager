@@ -7,7 +7,7 @@ import resourceUpgrade from './resource-upgrade/upgrade';
 import resourceUpgradeLegacy from './resource-upgrade/upgradeLegacy';
 import routing from './host.routes';
 
-const moduleName = 'ovhManagerDedicatedCloudDatacenterHost';
+const moduleName = 'managedBaremetalDatacenterHost';
 
 angular
   .module(moduleName, [

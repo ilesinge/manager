@@ -3,7 +3,7 @@ import angular from 'angular';
 import datacenterSecurityLogoutComponent from '../../../components/dedicated-cloud/security/logout';
 import routing from './logout.routing';
 
-const moduleName = 'dedicatedCloudSecurityLogout';
+const moduleName = 'managedBaremetalSecurityLogout';
 
 angular.module(moduleName, [datacenterSecurityLogoutComponent]).config(routing);
 

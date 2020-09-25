@@ -2,7 +2,7 @@ import certification from '../../../../../components/dedicated-cloud/service-pac
 
 import { registerState } from './certification.routing';
 
-const moduleName = 'ovhManagerPccServicePackUpgradeCertification';
+const moduleName = 'managedBaremetalServicePackUpgradeCertification';
 
 angular.module(moduleName, [certification]).config(registerState);
 

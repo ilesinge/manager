@@ -13,7 +13,7 @@ import sessionTimeoutUpdate from './session-timeout/update';
 import simultaneousConnectionUpdate from './simultaneous-connection/update';
 import update from './update';
 
-const moduleName = 'dedicatedCloudSecurityModule';
+const moduleName = 'managedBaremetalSecurityModule';
 
 angular
   .module(moduleName, [

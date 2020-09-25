@@ -2,7 +2,7 @@ import configurationOnly from '../../../../../components/dedicated-cloud/service
 
 import { registerState } from './configuration-only.routing';
 
-const moduleName = 'ovhManagerPccServicePackUpgradeConfigurationOnly';
+const moduleName = 'managedBaremetalServicePackUpgradeConfigurationOnly';
 
 angular.module(moduleName, [configurationOnly]).config(registerState);
 

@@ -3,7 +3,7 @@ import angular from 'angular';
 import datacenterHostResourceUpgradeLegacyComponent from '../../../../../components/dedicated-cloud/resource/upgradeLegacy';
 import routing from './resource-upgrade-legacy.routes';
 
-const moduleName = 'dedicatedCloudDatacenterHostResourceUpgradeLegacyModule';
+const moduleName = 'managedBaremetalDatacenterHostResourceUpgradeLegacyModule';
 
 angular
   .module(moduleName, [datacenterHostResourceUpgradeLegacyComponent])

@@ -4,7 +4,7 @@ import datacenterDeleteDrpComponent from '../../../../components/dedicated-cloud
 import drp from '../../../../components/dedicated-cloud/datacenter/drp';
 import routing from './delete-drp.routes';
 
-const moduleName = 'ovhManagerDedicatedCloudDatacenterDeleteDrp';
+const moduleName = 'managedBaremetalDatacenterDeleteDrp';
 
 angular.module(moduleName, [datacenterDeleteDrpComponent, drp]).config(routing);
 

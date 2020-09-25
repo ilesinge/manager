@@ -1,4 +1,4 @@
-const moduleName = 'dedicatedCloudDatacenterDashboardDeleteDrpModule';
+const moduleName = 'managedBaremetalDatacenterDashboardDeleteDrpModule';
 
 angular.module(moduleName, []).config(
   /* @ngInject */ ($stateProvider) => {

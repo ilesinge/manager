@@ -6,7 +6,7 @@ import ovhConfiguration from './configuration/ovh';
 import routing from './drp.routing';
 import summary from './summary';
 
-const moduleName = 'ovhManagerDedicatedCloudDatacenterDrpModule';
+const moduleName = 'managedBaremetalDatacenterDrpModule';
 
 angular
   .module(moduleName, [

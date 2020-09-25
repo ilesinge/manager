@@ -5,7 +5,7 @@ import onPremisePcc from './onPremisePcc';
 import ovhPcc from './ovhPcc';
 import routing from './onPremise.routing';
 
-const moduleName = 'dedicatedCloudDatacenterDrpOnPremiseModule';
+const moduleName = 'managedBaremetalDatacenterDrpOnPremiseModule';
 
 angular
   .module(moduleName, [datacenterDrpOnPremiseComponent, onPremisePcc, ovhPcc])

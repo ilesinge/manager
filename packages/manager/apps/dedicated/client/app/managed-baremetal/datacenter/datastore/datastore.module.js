@@ -7,7 +7,7 @@ import resourceUpgrade from './resource-upgrade/upgrade';
 import resourceUpgradeLegacy from './resource-upgrade/upgradeLegacy';
 import routing from './datastore.routes';
 
-const moduleName = 'ovhManagerDedicatedCloudDatacenterDatastore';
+const moduleName = 'managedBaremetalDatacenterDatastore';
 
 angular
   .module(moduleName, [

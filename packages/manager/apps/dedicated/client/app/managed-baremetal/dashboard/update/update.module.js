@@ -9,7 +9,7 @@ import component from './update.component';
 import routing from './update.routing';
 import updateVersionComponent from '../../../components/dedicated-cloud/dashboard/update';
 
-const moduleName = 'ovhManagerPccDashboardUpdate';
+const moduleName = 'managedBaremetalDashboardUpdate';
 
 angular
   .module(moduleName, [

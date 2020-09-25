@@ -10,7 +10,7 @@ import rights from './rights';
 import routing from './user.routes';
 import userComponent from '../../components/dedicated-cloud/user';
 
-const moduleName = 'dedicatedCloudUserModule';
+const moduleName = 'managedBaremetalUserModule';
 
 angular
   .module(moduleName, [
