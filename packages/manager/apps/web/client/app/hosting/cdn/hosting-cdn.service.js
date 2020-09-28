@@ -1,13 +1,9 @@
-
 export default class HostingCDN {
-
   /**
    *
    * @param OvhHttp
    */
-  constructor(
-    OvhHttp,
-  ) {
+  constructor(OvhHttp) {
     this.OvhHttp = OvhHttp;
   }
 
@@ -29,10 +25,13 @@ export default class HostingCDN {
    * @returns {*}:
    */
   getSharedCDNAvailableOptions(serviceName) {
-    return this.OvhHttp.get(`/hosting/web/${serviceName}/cdn/availableOptions`, {
-      rootPath: 'apiv6',
-      data: {},
-    });
+    return this.OvhHttp.get(
+      `/hosting/web/${serviceName}/cdn/availableOptions`,
+      {
+        rootPath: 'apiv6',
+        data: {},
+      },
+    );
   }
 
   /**
@@ -54,10 +53,13 @@ export default class HostingCDN {
    * @returns {*}
    */
   getSharedCDNDomainDetails(serviceName, domainName) {
-    return this.OvhHttp.get(`/hosting/web/${serviceName}/cdn/domain/${domainName}`, {
-      rootPath: 'apiv6',
-      data: {},
-    });
+    return this.OvhHttp.get(
+      `/hosting/web/${serviceName}/cdn/domain/${domainName}`,
+      {
+        rootPath: 'apiv6',
+        data: {},
+      },
+    );
   }
 
   /**
@@ -67,10 +69,13 @@ export default class HostingCDN {
    * @returns {*}
    */
   getCDNDomainsDetails(serviceName, domainName) {
-    return this.OvhHttp.get(`/hosting/web/${serviceName}/cdn/domain/${domainName}/option`, {
-      rootPath: 'apiv6',
-      data: {},
-    });
+    return this.OvhHttp.get(
+      `/hosting/web/${serviceName}/cdn/domain/${domainName}/option`,
+      {
+        rootPath: 'apiv6',
+        data: {},
+      },
+    );
   }
 
   /**
@@ -81,10 +86,13 @@ export default class HostingCDN {
    * @returns {*}
    */
   resetCDNOptionToDefault(serviceName, domainName, optionName) {
-    return this.OvhHttp.delete(`/hosting/web/${serviceName}/cdn/domain/${domainName}/option/${optionName}`, {
-      rootPath: 'apiv6',
-      data: {},
-    });
+    return this.OvhHttp.delete(
+      `/hosting/web/${serviceName}/cdn/domain/${domainName}/option/${optionName}`,
+      {
+        rootPath: 'apiv6',
+        data: {},
+      },
+    );
   }
 
   /**
@@ -95,10 +103,13 @@ export default class HostingCDN {
    * @returns {*}
    */
   getCDNDomainOptionDetails(serviceName, domainName, optionName) {
-    return this.OvhHttp.get(`/hosting/web/${serviceName}/cdn/domain/${domainName}/option/${optionName}`, {
-      rootPath: 'apiv6',
-      data: {},
-    });
+    return this.OvhHttp.get(
+      `/hosting/web/${serviceName}/cdn/domain/${domainName}/option/${optionName}`,
+      {
+        rootPath: 'apiv6',
+        data: {},
+      },
+    );
   }
 
   /**
@@ -109,10 +120,13 @@ export default class HostingCDN {
    * @returns {*}
    */
   updateCDNDomainOption(serviceName, domainName, optionName) {
-    return this.OvhHttp.put(`/hosting/web/${serviceName}/cdn/domain/${domainName}/option/${optionName}`, {
-      rootPath: 'apiv6',
-      data: {},
-    });
+    return this.OvhHttp.put(
+      `/hosting/web/${serviceName}/cdn/domain/${domainName}/option/${optionName}`,
+      {
+        rootPath: 'apiv6',
+        data: {},
+      },
+    );
   }
 
   /**
@@ -122,10 +136,13 @@ export default class HostingCDN {
    * @returns {*}
    */
   flushCDNDomainCache(serviceName, domainName) {
-    return this.OvhHttp.post(`/hosting/web/${serviceName}/cdn/domain/${domainName}/purge`, {
-      rootPath: 'apiv6',
-      data: {},
-    });
+    return this.OvhHttp.post(
+      `/hosting/web/${serviceName}/cdn/domain/${domainName}/purge`,
+      {
+        rootPath: 'apiv6',
+        data: {},
+      },
+    );
   }
 
   /**
@@ -135,10 +152,13 @@ export default class HostingCDN {
    * @returns {*}
    */
   refreshCDNDomain(serviceName, domainName) {
-    return this.OvhHttp.post(`/hosting/web/${serviceName}/cdn/domain/${domainName}/refresh`, {
-      rootPath: 'apiv6',
-      data: {},
-    });
+    return this.OvhHttp.post(
+      `/hosting/web/${serviceName}/cdn/domain/${domainName}/refresh`,
+      {
+        rootPath: 'apiv6',
+        data: {},
+      },
+    );
   }
 
   /**

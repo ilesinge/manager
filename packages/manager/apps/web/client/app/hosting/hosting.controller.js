@@ -406,7 +406,7 @@ export default class {
       })
       .then(({ hosting, user }) =>
         isEmpty(hosting.offer)
-          ? this.$q.when({ hosting, user, cdn })
+          ? this.$q.when({ hosting, user })
           : this.$q.all({
               indys: this.HostingIndy.getIndys(this.$stateParams.productId),
               freedoms: this.HostingFreedom.getFreedoms(
@@ -414,12 +414,10 @@ export default class {
                 { forceRefresh: false },
               ),
               hosting,
-              user,
-              cdn: this.HostingCDN.getCDNProperties(hosting.serviceName),
+              user
             }),
       )
-      .then(({ indys, freedoms, hosting, user, cdn }) => {
-        console.log('ZM:: CDN', cdn);
+      .then(({ indys, freedoms, hosting, user }) => {
         this.tabMenu = {
           title: this.$translate.instant('navigation_more'),
           items: [
@@ -433,7 +431,6 @@ export default class {
             },
           ],
         };
-        this.$scope.cdnProperties = cdn;
 
         if (hosting.isCloudWeb) {
           remove(this.tabs, (t) => t === 'TASK');
@@ -732,7 +729,7 @@ export default class {
           ],
         });
       })
-      .then(({ serviceInfos, hostingProxy, hostingUrl, domainOrderUrl }) => {
+      .then(({ serviceInfos, hostingProxy, hostingUrl, domainOrderUrl, cdn }) => {
         this.$scope.hosting.serviceInfos = serviceInfos;
         this.$scope.hostingProxy = hostingProxy;
         this.$scope.ftp = hostingProxy.serviceManagementAccess.ftp;
@@ -746,7 +743,6 @@ export default class {
         this.$scope.sshUrl = `ssh://${hostingProxy.serviceManagementAccess.ssh.url}:${hostingProxy.serviceManagementAccess.ssh.port}/`;
         this.$scope.urls.hosting = hostingUrl;
         this.$scope.urlDomainOrder = domainOrderUrl;
-
         return this.User.getUrlOf('guides');
       })
       .then((guides) => {
@@ -815,6 +811,7 @@ export default class {
         this.Alerter.error(err);
       })
       .then(() => this.handlePrivateDatabases())
+      .then(() => this.handleCDNProperties())
       .finally(() => {
         this.$scope.loadingHostingInformations = false;
       });
@@ -824,6 +821,19 @@ export default class {
     return this.getPrivateDatabases().then((privateDatabases) => {
       this.$scope.privateDatabases = privateDatabases;
     });
+  }
+
+  handleCDNProperties() {
+    return this.HostingCDN.getCDNProperties(this.$scope.hosting.serviceName)
+      .then((cdn) => {
+        console.log('ZM:: CDN', cdn);
+        this.$scope.cdnProperties = cdn;
+      })
+      .catch((err) => {
+        console.log('ZM:: ERR', err);
+        this.Alerter.error(err);
+        this.$scope.cdnProperties = null;
+      })
   }
 
   setSelectedTab(tab) {

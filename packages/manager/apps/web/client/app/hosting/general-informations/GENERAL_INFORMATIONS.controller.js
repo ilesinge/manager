@@ -3,6 +3,7 @@ import isEmpty from 'lodash/isEmpty';
 import isObject from 'lodash/isObject';
 
 import { QUOTA_DECIMAL_PRECISION } from './general-informations.constants';
+import get from "lodash/get";
 
 export default class HostingGeneralInformationsCtrl {
   /* @ngInject */
@@ -241,5 +242,16 @@ export default class HostingGeneralInformationsCtrl {
 
   activateEmailOffer() {
     this.$state.go('app.hosting.activate', { serviceName: this.serviceName });
+  }
+
+  getCDNBannerMSG() {
+    console.log('ZM:: getCDNBannerMSG', this.$scope.cdnProperties);
+    if (get(this.$scope.cdnProperties, 'version') === '2013v1') {
+      return this.$translate.instant('hosting_dashboard_service_cdn_customer_has_cdn_v1_banner_msg');
+    }
+
+    if (this.$scope.cdnProperties === null) {
+      return this.$translate.instant('hosting_dashboard_service_cdn_customer_has_no_cdn_banner_msg');
+    }
   }
 }
