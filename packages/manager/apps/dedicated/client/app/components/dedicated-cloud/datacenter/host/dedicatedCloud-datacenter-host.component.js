@@ -5,6 +5,7 @@ export default {
   bindings: {
     datacenterId: '<',
     datacenter: '<',
+    dedicatedCloud: '<',
     orderHost: '<',
     productId: '<',
     resourceUpgrade: '<',
