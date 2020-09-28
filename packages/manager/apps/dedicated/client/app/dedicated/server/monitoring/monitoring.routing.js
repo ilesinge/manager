@@ -22,9 +22,9 @@ export default /* @ngInject */ ($stateProvider) => {
         Server.listIps($stateParams.productId).then((ips) =>
           flatten(
             map(
-            filter(ips, (ip) => !includes(ip, ':')),
-            (ip) => IpRange.getRangeForIpv4Block(ip),
-          ),
+              filter(ips, (ip) => !includes(ip, ':')),
+              (ip) => IpRange.getRangeForIpv4Block(ip),
+            ),
           ),
         ),
       languageEnum: /* @ngInject */ (models) =>
@@ -44,6 +44,8 @@ export default /* @ngInject */ ($stateProvider) => {
             ),
           )
           .catch((err) => (err.state === 404 ? undefined : $q.reject(err))),
+      breadcrumb: /* @ngInject */ ($translate) =>
+        $translate.instant('dedicated_server_monitoring'),
     },
   });
 };
