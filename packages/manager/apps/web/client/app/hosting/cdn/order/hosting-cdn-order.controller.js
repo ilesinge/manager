@@ -53,4 +53,8 @@ export default class {
   getDuration(interval) {
     return this.$filter('wucDuration')(interval.toString(), 'longDate');
   }
+
+  getOrderDescriptionMSG() {
+
+  }
 }

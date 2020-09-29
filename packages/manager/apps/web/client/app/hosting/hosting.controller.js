@@ -729,7 +729,7 @@ export default class {
           ],
         });
       })
-      .then(({ serviceInfos, hostingProxy, hostingUrl, domainOrderUrl, cdn }) => {
+      .then(({ serviceInfos, hostingProxy, hostingUrl, domainOrderUrl }) => {
         this.$scope.hosting.serviceInfos = serviceInfos;
         this.$scope.hostingProxy = hostingProxy;
         this.$scope.ftp = hostingProxy.serviceManagementAccess.ftp;
@@ -826,11 +826,9 @@ export default class {
   handleCDNProperties() {
     return this.HostingCDN.getCDNProperties(this.$scope.hosting.serviceName)
       .then((cdn) => {
-        console.log('ZM:: CDN', cdn);
         this.$scope.cdnProperties = cdn;
       })
       .catch((err) => {
-        console.log('ZM:: ERR', err);
         this.Alerter.error(err);
         this.$scope.cdnProperties = null;
       })

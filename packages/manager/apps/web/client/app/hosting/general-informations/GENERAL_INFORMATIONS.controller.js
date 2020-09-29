@@ -250,7 +250,7 @@ export default class HostingGeneralInformationsCtrl {
       return this.$translate.instant('hosting_dashboard_service_cdn_customer_has_cdn_v1_banner_msg');
     }
 
-    if (this.$scope.cdnProperties === null) {
+    if (get(this.$scope.hosting, 'hasCdn') === false) {
       return this.$translate.instant('hosting_dashboard_service_cdn_customer_has_no_cdn_banner_msg');
     }
   }

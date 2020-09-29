@@ -409,30 +409,54 @@
                         </oui-tile-description>
                         <oui-action-menu
                             data-compact
-                            data-ng-if="flushCdnState === 'ok' && !hosting.hasCdn && hosting.offer!== 'START_10_M' || hosting.hasCdn && flushCdnState === 'ok' || hosting.hasCdn"
                             data-placement="end"
                         >
                             <oui-action-menu-item
-                                data-ng-if="flushCdnState === 'ok' && !hosting.hasCdn && hosting.offer!== 'START_10_M'"
-                                data-href="{{:: $ctrl.$state.href('app.hosting.cdn.order') }}"
-                                ><span
-                                    data-ng-bind=":: (isCdnFree ? 'hosting_dashboard_service_activate_cdn' : 'hosting_dashboard_service_order_cdn') | translate"
-                                ></span
-                            ></oui-action-menu-item>
-                            <oui-action-menu-item
-                                data-ng-if="hosting.hasCdn && flushCdnState === 'ok'"
-                                data-on-click="setAction('cdn/flush/hosting-cdn-flush')"
+                                data-ng-if="hosting.hasCdn && cdnProperties.version === '2013v1'"
+                                data-on-click="setAction('cdn/terminate/hosting-cdn-terminate')"
                             >
                                 <span
-                                    data-translate="hosting_dashboard_service_flush_cdn"
+                                    data-translate="hosting_dashboard_service_change_cdn_version"
                                 ></span>
                             </oui-action-menu-item>
                             <oui-action-menu-item
-                                data-ng-if="hosting.hasCdn"
+                                data-ng-if="hosting.hasCdn && cdnProperties.version === 'v2'"
+                                data-on-click="setAction('cdn/terminate/hosting-cdn-terminate')"
+                            >
+                                <span
+                                    data-translate="hosting_dashboard_service_setting_cdn"
+                                ></span>
+                            </oui-action-menu-item>
+                            <oui-action-menu-item
+                                data-ng-if="hosting.hasCdn && cdnProperties.version === 'v2'"
+                                data-on-click="setAction('cdn/terminate/hosting-cdn-terminate')"
+                            >
+                                <span
+                                    data-translate="hosting_dashboard_service_change_cdn"
+                                ></span>
+                            </oui-action-menu-item>
+                            <oui-action-menu-item
+                                data-ng-if="hosting.hasCdn && (cdnProperties.version === '2013v1' || cdnProperties.version === 'v2')"
                                 data-on-click="setAction('cdn/terminate/hosting-cdn-terminate')"
                             >
                                 <span
                                     data-translate="hosting_dashboard_service_terminate_cdn"
+                                ></span>
+                            </oui-action-menu-item>
+                            <oui-action-menu-item
+                                data-ng-if="!hosting.hasCdn"
+                                data-href="{{:: $ctrl.$state.href('app.hosting.cdn.order') }}"
+                            >
+                                <span
+                                    data-translate="hosting_dashboard_service_order_cdn"
+                                ></span>
+                            </oui-action-menu-item>
+                            <oui-action-menu-item
+                                data-ng-if="!hosting.hasCdn"
+                                data-href="{{:: $ctrl.$state.href('app.hosting.cdn.order') }}"
+                            >
+                                <span
+                                    data-translate="hosting_dashboard_service_activate_cdn_option"
                                 ></span>
                             </oui-action-menu-item>
                         </oui-action-menu>
