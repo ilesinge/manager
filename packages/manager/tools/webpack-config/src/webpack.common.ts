@@ -42,10 +42,10 @@ export = opts => {
     plugins: [
       // copy application assets
       // note: we could use the html-loader plugin but it wouldn't work for dynamic src attributes!
-      new CopyWebpackPlugin(
-        get(opts, 'assets.files', []),
-        get(opts, 'assets.options', {}),
-      ),
+      new CopyWebpackPlugin({
+        patterns: get(opts, 'assets.files', []),
+        options: get(opts, 'assets.options', {})
+      }),
 
       // see : https://github.com/jantimon/html-webpack-plugin
       new HtmlWebpackPlugin({
