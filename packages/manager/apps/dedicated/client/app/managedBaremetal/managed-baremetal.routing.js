@@ -1,5 +1,8 @@
 import get from 'lodash/get';
+import map from 'lodash/map';
+import reduce from 'lodash/reduce';
 import sortBy from 'lodash/sortBy';
+import uniq from 'lodash/uniq';
 
 import DedicatedCloudInfo from '../components/dedicated-cloud/dedicatedCloud.class';
 import {
@@ -184,11 +187,35 @@ export default /* @ngInject */ ($stateProvider, $urlServiceProvider) => {
         message = false,
         type = 'success',
       ) => goBackToState('app.managedBaremetal.dashboard', message, type),
-      nsxUnavailable: /* @ngInject */ () => true,
       operationsUrl: /* @ngInject */ ($state, currentService) =>
         $state.href('app.managedBaremetal.operation', {
           productId: currentService.serviceName,
         }),
+      optionsAvailable: /* @ngInject */ (
+        currentService,
+        currentUser,
+        ovhManagerPccDashboardOptionsService,
+      ) =>
+        ovhManagerPccDashboardOptionsService
+          .getInitialData(
+            currentService.name,
+            currentUser.ovhSubsidiary,
+            currentService.servicePackName,
+          )
+          .then((model) => {
+            const options = uniq(
+              reduce(
+                model.servicePacks.all,
+                (availableOptions, servicePack) => {
+                  return availableOptions.concat(
+                    map(servicePack.options, (option) => option.name),
+                  );
+                },
+                [],
+              ),
+            );
+            return options;
+          }),
       orderDatastore: /* @ngInject */ ($state, usesLegacyOrder) => (
         datacenterId,
       ) =>
