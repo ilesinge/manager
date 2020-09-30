@@ -7,6 +7,7 @@ export default {
     datacenter: '<',
     dedicatedCloud: '<',
     orderHost: '<',
+    pccType: '<',
     productId: '<',
     resourceUpgrade: '<',
     serviceId: '<',

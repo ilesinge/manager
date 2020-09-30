@@ -98,7 +98,11 @@
 
     <oui-tile-definition
         data-term="{{:: 'ovhManagerPccDashboardGeneralInformation_commercialRange_term' | translate }}"
-        data-description="{{:: $ctrl.bindings.commercialRange }}"
+        data-description="{{::
+            ('ovhManagerPccDashboardGeneralInformation_commercialRange_' + $ctrl.pccType) | translate: {
+                commercialRange: $ctrl.bindings.commercialRange
+            }
+        }}"
     ></oui-tile-definition>
 
     <oui-tile-definition

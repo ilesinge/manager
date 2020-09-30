@@ -236,6 +236,7 @@ export default /* @ngInject */ ($stateProvider, $urlServiceProvider) => {
             datacenterId,
           },
         ),
+      pccType: () => 'EPCC',
       setMessage: /* @ngInject */ (Alerter) => (
         message = false,
         type = 'success',

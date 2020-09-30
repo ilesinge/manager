@@ -18,6 +18,8 @@
   "ovhManagerPccDashboardGeneralInformation_softwareSolution_reschedule_update": "Modifier la date de mise à jour",
 
   "ovhManagerPccDashboardGeneralInformation_commercialRange_term": "Gamme commerciale",
+  "ovhManagerPccDashboardGeneralInformation_commercialRange_EPCC": "Premier - {{commercialRange}}",
+  "ovhManagerPccDashboardGeneralInformation_commercialRange_MBM": "Essentials - {{commercialRange}}",
 
   "ovhManagerPccDashboardGeneralInformation_location_term": "Localisation",
 

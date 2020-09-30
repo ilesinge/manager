@@ -236,6 +236,7 @@ export default /* @ngInject */ ($stateProvider, $urlServiceProvider) => {
             datacenterId,
           },
         ),
+      pccType: () => 'MBM',
       setMessage: /* @ngInject */ (Alerter) => (
         message = false,
         type = 'success',

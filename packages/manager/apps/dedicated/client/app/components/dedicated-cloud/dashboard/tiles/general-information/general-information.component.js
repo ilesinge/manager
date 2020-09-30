@@ -8,6 +8,7 @@ export default {
     onUpgradeVersion: '<',
     onAssociateIpBlock: '<',
     onExecutionDateChange: '<',
+    pccType: '<',
   },
   controller,
   name: 'ovhManagerPccDashboardGeneralInformation',

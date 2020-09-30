@@ -13,6 +13,8 @@
   "dedicatedCloud_tab_host_status_ERROR": "Erreur",
   "dedicatedCloud_tab_host_status_REMOVING": "Suppression en cours",
   "dedicatedCloud_tab_host_status_UNKNOWN": "Inconnu",
+  "dedicatedCloud_tab_host_profile_EPCC": "Premier - {{profile}}",
+  "dedicatedCloud_tab_host_profile_MBM": "Essentials - {{profile}}",
   "dedicatedCloud_tab_host_consumption": "Consommation",
   "dedicatedCloud_tab_host_empty": "Aucun host",
   "dedicatedCloud_tab_host_hourly_usage_1": "1 heure",

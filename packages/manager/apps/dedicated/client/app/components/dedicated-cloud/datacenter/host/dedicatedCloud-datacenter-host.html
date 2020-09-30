@@ -30,10 +30,9 @@
                 data-property="profile"
             >
                 <span
-                    data-ng-bind=":: $ctrl.dedicatedCloud.commercialRange"
+                    data-translate="{{:: 'dedicatedCloud_tab_host_profile_' + $ctrl.pccType }}"
+                    data-translate-values="{ profile: $row.profile }"
                 ></span>
-                <span>-</span>
-                <span data-ng-bind=":: $row.profile"></span>
             </oui-datagrid-column>
             <oui-datagrid-column
                 data-title=":: 'dedicatedCloud_tab_host_billing' | translate"
