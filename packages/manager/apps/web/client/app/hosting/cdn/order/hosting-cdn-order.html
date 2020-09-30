@@ -7,8 +7,7 @@
 </div>
 
 <div data-ng-if="!$ctrl.loading">
-    <p data-translate="hosting_cdn_order_description"></p>
-
+    <p data-ng-bind=":: $ctrl.getOrderDescriptionMSG()"></p>
     <oui-stepper
         data-current-index="$ctrl.currentIndex"
         data-on-finish="$ctrl.checkout()"

@@ -1,11 +1,15 @@
 import filter from 'lodash/filter';
 import includes from 'lodash/includes';
+import get from "lodash/get";
 
 export default class {
   /* @ngInject */
-  constructor($filter, $timeout) {
+  constructor($scope, $filter, $timeout, $translate) {
+    this.$scope = $scope;
     this.$filter = $filter;
     this.$timeout = $timeout;
+    this.$translate = $translate;
+    //this.cdnProperties = cdnProperties;
   }
 
   $onInit() {
@@ -55,6 +59,24 @@ export default class {
   }
 
   getOrderDescriptionMSG() {
+    console.log('ZM:: hasCDN', this.hasCDN);
+    console.log('ZM:: isV1CDN', this.isV1CDN);
+    console.log('ZM:: isV2CDN', this.isV2CDN);
+
+    // CDN Included
+    if (this.isIncludedCDN) {
+      return this.$translate.instant('hosting_cdn_order_customer_with_cdn_v1_included_description');
+    }
+
+    // CDN Payable
+    if (this.isPayableCDN) {
+      return this.$translate.instant('hosting_cdn_order_customer_with_cdn_v1_payable_description');
+    }
+
+    // NO CDN
+    if (!this.hasCDN) {
+      return this.$translate.instant('hosting_cdn_order_customer_without_cdn_description');
+    }
 
   }
 }

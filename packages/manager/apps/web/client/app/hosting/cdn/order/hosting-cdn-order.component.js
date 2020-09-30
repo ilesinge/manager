@@ -15,5 +15,11 @@ export default {
     serviceName: '<',
     serviceOption: '<',
     user: '<',
+    hasCDN: '<',
+    isV1CDN: '<',
+    isIncludedCDN: '<',
+    isPayableCDN: '<',
+    isV2CDN: '<',
+    cdnProperties: '<',
   },
 };

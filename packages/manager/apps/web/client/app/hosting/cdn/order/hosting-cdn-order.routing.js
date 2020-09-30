@@ -100,6 +100,46 @@ export default /* @ngInject */ ($stateProvider) => {
       serviceOption: /* @ngInject */ (availableOptions, goBackWithError) =>
         find(availableOptions, { family: 'cdn' }) ||
         goBackWithError('No serviceOption found'),
+
+      cdnProperties: /* @ngInject */ (HostingCDN, serviceName) => {
+        return HostingCDN
+          .getCDNProperties(serviceName)
+          .then((cdn) => {
+            console.log('ZM:: cdnProperties.then', cdn);
+            return cdn;
+          })
+          .catch((err) => {
+            console.log('ZM:: cdnProperties.catch', err);
+            return null;
+            /*
+            v1: {domain: "agora6.ovh",
+              free: true,
+              status: "created",
+              taskId: null,
+              type: "business",
+              version: "2013v1"}
+
+            V2: {domain: "wyupvok.cluster026.hosting.ovh.net"
+              taskId: null,
+              version: "v2",
+              free: false,
+              type: "cdn-basic",
+              status: "created"}
+
+            */
+          })
+      },
+
+      hasCDN: /* @ngInject */ (cdnProperties) => cdnProperties !== null,
+
+      isV1CDN: /* @ngInject */ (cdnProperties, hasCDN) => hasCDN && cdnProperties.version === '2013v1',
+
+      isIncludedCDN: /* @ngInject */ (cdnProperties, isV1CDN) => isV1CDN && cdnProperties.free,
+
+      isPayableCDN: /* @ngInject */ (cdnProperties, isV1CDN) => isV1CDN && !cdnProperties.free,
+
+      isV2CDN: /* @ngInject */ (cdnProperties, hasCDN) => hasCDN && cdnProperties.version === 'v2',
+
     },
   });
 };

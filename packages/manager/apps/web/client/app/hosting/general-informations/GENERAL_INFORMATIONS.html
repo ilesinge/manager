@@ -413,7 +413,7 @@
                         >
                             <oui-action-menu-item
                                 data-ng-if="hosting.hasCdn && cdnProperties.version === '2013v1'"
-                                data-on-click="setAction('cdn/terminate/hosting-cdn-terminate')"
+                                data-href="{{:: $ctrl.$state.href('app.hosting.cdn.order') }}"
                             >
                                 <span
                                     data-translate="hosting_dashboard_service_change_cdn_version"

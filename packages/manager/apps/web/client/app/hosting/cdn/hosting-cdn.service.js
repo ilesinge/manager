@@ -7,6 +7,21 @@ export default class HostingCDN {
     this.OvhHttp = OvhHttp;
   }
 
+  getAvailableHostings() {
+    return this.OvhHttp.get(`/hosting/web`, {
+      rootPath: 'apiv6',
+      data: {},
+    }).then((list) => {
+        list.forEach(hosting => {
+          return this.getCDNProperties(hosting)
+            .then((cdn) => {
+              cdn.version === 'v2' ? console.log('ZM:: isV2', hosting) : null;
+            })
+            .catch((err) => { })
+        })
+      });
+  }
+
   /**
    * Get this object properties
    * @param {string} serviceName: The internal name of your hosting
