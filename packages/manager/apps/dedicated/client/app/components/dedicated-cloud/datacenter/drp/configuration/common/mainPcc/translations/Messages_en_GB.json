@@ -1,6 +1,8 @@
 {
-  "dedicatedCloud_datacenter_pcc_name": "Private Cloud name: {{pcc}}",
-  "dedicatedCloud_datacenter_main_datacenter_name": "Private Cloud datacenter ID",
+  "dedicatedCloud_datacenter_pcc_name_EPCC": "Private Cloud name: {{pcc}}",
+  "dedicatedCloud_datacenter_pcc_name_MBM": "Essentials name: {{pcc}}",
+  "dedicatedCloud_datacenter_main_datacenter_name_EPCC": "Private Cloud datacenter ID",
+  "dedicatedCloud_datacenter_main_datacenter_name_MBM": "Essentials datacenter ID",
   "dedicatedCloud_datacenter_main_datacenter_name_placeholder": "Select a primary datacenter",
   "dedicatedCloud_datacenter_main_ip_address_pool_available": "Available public IP address pools",
   "dedicatedCloud_datacenter_main_ip_address_pool_available_placeholder": "Select an available public IP address",
