@@ -112,8 +112,17 @@ export default /* @ngInject */ ($stateProvider) => {
             console.log('ZM:: cdnProperties.catch', err);
             return null;
             /*
-            v1: {domain: "agora6.ovh",
+            NO: null
+
+            v1 included: {domain: "agora6.ovh",
               free: true,
+              status: "created",
+              taskId: null,
+              type: "business",
+              version: "2013v1"}
+
+            v1 payable: {domain: "agora6.ovh",
+              free: false,
               status: "created",
               taskId: null,
               type: "business",

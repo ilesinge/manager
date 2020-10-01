@@ -14,6 +14,7 @@ import {
 export default class {
   /* @ngInject */
   constructor($attrs) {
+    console.log('ZM:: $attrs', $attrs);
     this.$attrs = $attrs;
     this.isUndefined = isUndefined;
   }
@@ -149,5 +150,10 @@ export default class {
    */
   isUSFormat() {
     return US_FORMAT.includes(this.ovhSubsidiary);
+  }
+
+  getKeyPartToConcat() {
+    console.log('ZM:: this?cdn', this.cdnCase);
+    return this.cdnCase ? '_cdn_' : '_';
   }
 }

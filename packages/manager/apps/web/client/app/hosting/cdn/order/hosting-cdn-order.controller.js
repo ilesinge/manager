@@ -9,7 +9,7 @@ export default class {
     this.$filter = $filter;
     this.$timeout = $timeout;
     this.$translate = $translate;
-    //this.cdnProperties = cdnProperties;
+    this.cdnCase = null;
   }
 
   $onInit() {
@@ -25,6 +25,14 @@ export default class {
       // Go directly to the next step
       this.currentIndex = 1;
       this.isEditable = false;
+    }
+
+    if (this.isIncludedCDN) {
+      this.cdnCase = 'included';
+    } else if (this.isPayableCDN) {
+      this.cdnCase = 'payable';
+    } else if (!this.hasCDN) {
+      this.cdnCase = 'without';
     }
   }
 
@@ -58,25 +66,13 @@ export default class {
     return this.$filter('wucDuration')(interval.toString(), 'longDate');
   }
 
-  getOrderDescriptionMSG() {
-    console.log('ZM:: hasCDN', this.hasCDN);
-    console.log('ZM:: isV1CDN', this.isV1CDN);
-    console.log('ZM:: isV2CDN', this.isV2CDN);
-
-    // CDN Included
-    if (this.isIncludedCDN) {
-      return this.$translate.instant('hosting_cdn_order_customer_with_cdn_v1_included_description');
+  getButtonSubmitText() {
+    if (this.isOptionFree) {
+      return this.$translate.instant('hosting_cdn_order_submit_activate');
+    } else if (this.isIncludedCDN) {
+      return this.$translate.instant('hosting_cdn_order_customer_cdn_included_step2_btn_ok');
+    } else {
+      return this.$translate.instant('hosting_cdn_order_submit_pay');
     }
-
-    // CDN Payable
-    if (this.isPayableCDN) {
-      return this.$translate.instant('hosting_cdn_order_customer_with_cdn_v1_payable_description');
-    }
-
-    // NO CDN
-    if (!this.hasCDN) {
-      return this.$translate.instant('hosting_cdn_order_customer_without_cdn_description');
-    }
-
   }
 }
