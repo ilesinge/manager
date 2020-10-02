@@ -20,7 +20,7 @@ export default class SmsBatchesHistoryController {
       )
       .then(() => this.refreshBatches())
       .then(() => {
-        this.hasCanceled = true;
+        this.hasCancelled = true;
       })
       .catch((error) => {
         this.error = get(error, 'data.message', error.message);
